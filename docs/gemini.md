@@ -76,7 +76,7 @@
 ### 3.1. 브랜치 전략
 
 *   `main`: 프로덕션 릴리즈 브랜치.
-*   `develop`: 다음 릴리즈를 위한 통합 브랜치.
+*   `dev`: 다음 릴리즈를 위한 통합 브랜치.
 *   `feat/{issue-number}-{description}`: 기능 개발 브랜치.
 *   `fix/{issue-number}-{description}`: 버그 수정 브랜치.
 *   `exp/{yyyymmdd}-{initials}-{idea}`: 실험/POC 브랜치.
