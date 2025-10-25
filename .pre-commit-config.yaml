@@ -1,0 +1,15 @@
+repos:
+- repo: https://github.com/charliermarsh/ruff-pre-commit
+  rev: v0.6.8
+  hooks:
+    # 1) 린트 + 자동수정 + 임포트 정렬(isort 규칙 I 포함)
+    - id: ruff
+      args: ["--fix", "--exit-non-zero-on-fix"]
+    # 2) 포맷(Black 역할 대체)
+    - id: ruff-format
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.6.0
+  hooks:
+    - id: end-of-file-fixer
+    - id: trailing-whitespace

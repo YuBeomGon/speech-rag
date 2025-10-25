@@ -1,0 +1,48 @@
+[project]
+name = "speech-kws-rag"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.3.0",
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "soundfile>=0.12",
+  "librosa>=0.10",
+  "tqdm>=4.66",
+  "pyyaml>=6.0",
+  "faiss-cpu>=1.8.0.post1",
+  "transformers>=4.44",
+  "sentence-transformers>=3.0.1",
+  # (black/isort 제거)
+]
+
+[tool.ruff]
+line-length = 88              # Black 기본값과 일치
+target-version = "py310"
+extend-exclude = ["data/**","runs/**",".venv/**"]
+
+[tool.ruff.lint]
+# E/F/W: 기본, I: isort 규칙(임포트 정렬)
+select = ["E","F","W","I"]
+# Black과 함께 쓰던 ignore(E203,E501 등)는 보통 불필요
+# 필요시 아래처럼 설정 가능:
+# ignore = ["E203", "E501"]
+
+# isort 동작 커스터마이즈(프로젝트 import 구분 정확도 ↑)
+[tool.ruff.lint.isort]
+known-first-party = ["src", "speech_kws_rag"]
+# src 경로 기반 임포트 정렬 인식
+# (ruff는 pyproject의 project structure를 꽤 잘 추론하지만
+#  명시하면 안정적)
+section-order = ["future","standard-library","third-party","first-party","local-folder"]
+
+[tool.ruff.format]
+quote-style = "double"        # Black 스타일과 거의 동일
+indent-style = "space"
+skip-magic-trailing-comma = false
+docstring-code-format = true   # 삼중따옴표 내 코드블록도 정리(선호시)
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q"
+testpaths = ["tests"]
